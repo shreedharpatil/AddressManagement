@@ -11,6 +11,7 @@ namespace AddressProcessing.CSV
         private StreamReader _readerStream = null;
         private StreamWriter _writerStream = null;
 
+        //// Built in FileMode can be used instead of user defined.
         [Flags]
         public enum Mode { Read = 1, Write = 2 };
 

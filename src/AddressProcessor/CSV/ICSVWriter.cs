@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace AddressProcessing.CSV
+﻿namespace AddressProcessing.CSV
 {
-    public interface ICSVWriter : IDisposable
+    public interface ICSVWriter
     {
         void Write(string fileName, params string[] columns);
     }

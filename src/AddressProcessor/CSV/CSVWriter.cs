@@ -1,29 +1,11 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
 namespace AddressProcessing.CSV
 {
     public class CSVWriter : ICSVWriter
     {
         private StreamWriter _writerStream = null;
-
-        public void Dispose()
-        {
-            if (this._writerStream != null)
-            {
-                this._writerStream = null;
-                GC.SuppressFinalize(this);
-            }            
-        }
-
-        ~CSVWriter()
-        {
-            if (this._writerStream != null)
-            {             
-                this._writerStream = null;
-            }            
-        }
-
+        
         public void Write(string fileName, params string[] columns)
         {
             FileInfo fileInfo = new FileInfo(fileName);
@@ -42,6 +24,7 @@ namespace AddressProcessing.CSV
 
             this._writerStream.WriteLine(outPut);
             this._writerStream.Close();
+            this._writerStream = null;
         }
     }
 }

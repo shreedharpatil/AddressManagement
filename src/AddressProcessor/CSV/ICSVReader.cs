@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace AddressProcessing.CSV
 {
-    public interface ICSVReader : IDisposable
+    public interface ICSVReader
     {
         IEnumerable<T> Read<T>(string fileName) where T : MailShotBase;
     }

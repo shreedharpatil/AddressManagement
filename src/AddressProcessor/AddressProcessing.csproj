@@ -51,12 +51,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Address\AddressFileProcessor2.cs" />
+    <Compile Include="Address\AddressFileProcessor1.cs" />
     <Compile Include="Address\AddressRecord.cs" />
     <Compile Include="Address\AddressFileProcessor.cs" />
     <Compile Include="CSV\CSVWriter.cs" />
     <Compile Include="CSV\MailShotBase.cs" />
     <Compile Include="CSV\CSVReader.cs" />
-    <Compile Include="CSV\EmailMailShot.cs" />
+    <Compile Include="CSV\EmailShot.cs" />
     <Compile Include="CSV\ICSVWriter.cs" />
     <Compile Include="CSV\ICSVReader.cs" />
     <Compile Include="CSV\CSVReaderWriterForAnnotation.cs" />

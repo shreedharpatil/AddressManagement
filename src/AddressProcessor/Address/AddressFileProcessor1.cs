@@ -4,29 +4,30 @@ using AddressProcessing.CSV;
 
 namespace AddressProcessing.Address
 {
-    public class AddressFileProcessor
+    public class AddressFileProcessor1
     {
         private readonly IMailShot _mailShot;
 
-        public AddressFileProcessor(IMailShot mailShot)
+        private readonly ICSVReaderWriter _csvReaderWriter;
+                
+        public AddressFileProcessor1(IMailShot mailShot, ICSVReaderWriter csvReaderWriter)
         {
             if (mailShot == null) throw new ArgumentNullException("mailShot");
-            this._mailShot = mailShot;
+            _mailShot = mailShot;
+            this._csvReaderWriter = csvReaderWriter;
         }
         
         public void Process(string inputFile)
         {
-            // using old approach.
+            // Slight better approach. Helps unit testing by mocking CSVReaderWriter dependency.
             // These methods are made obsolete just to enforce the callers to use refactored approach and can be removed in future.
-            // CSVReaderWriter dependency can be handled throgh interface rather than directly depending on it, as shown in Process1() method.
-            var reader = new CSVReaderWriter();
-            reader.Open(inputFile, CSVReaderWriter.Mode.Read);
+            this._csvReaderWriter.Open(inputFile, CSVReaderWriter.Mode.Read);
             string column1, column2;
-            while(reader.Read(out column1, out column2))
+            while (this._csvReaderWriter.Read(out column1, out column2))
             {
                 _mailShot.SendMailShot(column1, column2);
             }
-            reader.Close();            
+            this._csvReaderWriter.Close();
         }        
     }
 }
