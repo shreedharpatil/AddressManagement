@@ -13,6 +13,7 @@ namespace AddressProcessing.Address
         
         public AddressFileProcessor2(IMailShot mailShot, ICSVReader csvReader)
         {
+            // No need to check for null as it would be having insstance if its dependency injected.
             if (mailShot == null) throw new ArgumentNullException("mailShot");
             _mailShot = mailShot;
             this._csvReader = csvReader;

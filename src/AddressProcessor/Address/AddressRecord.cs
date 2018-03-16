@@ -1,5 +1,6 @@
 ﻿namespace AddressProcessing.Address
 {
+    // Class should be made public as its internal by default.
     class AddressRecord
     {
         public string Address { get; set; }
